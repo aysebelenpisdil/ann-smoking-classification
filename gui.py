@@ -107,11 +107,11 @@ class SmokingClassifierGUI:
         self.scaler = StandardScaler()
         self.data_loaded = False
 
-        # Model parametreleri
-        self.hidden1 = tk.IntVar(value=64)
-        self.hidden2 = tk.IntVar(value=32)
+        # Model parametreleri (Grid Search ile bulunan optimal degerler)
+        self.hidden1 = tk.IntVar(value=128)
+        self.hidden2 = tk.IntVar(value=64)
         self.ogrenme_orani = tk.DoubleVar(value=0.5)
-        self.iterasyon = tk.IntVar(value=100)
+        self.iterasyon = tk.IntVar(value=150)
 
         self.create_widgets()
 
@@ -160,7 +160,7 @@ class SmokingClassifierGUI:
         ttk.Entry(param_frame, textvariable=self.iterasyon, width=10).grid(row=3, column=1, pady=2)
 
         # Topoloji gosterimi
-        self.topo_label = ttk.Label(param_frame, text="Topoloji: 25 -> 64 -> 32 -> 1", font=('Helvetica', 10, 'bold'))
+        self.topo_label = ttk.Label(param_frame, text="Topoloji: 25 -> 128 -> 64 -> 1", font=('Helvetica', 10, 'bold'))
         self.topo_label.grid(row=4, column=0, columnspan=2, pady=10)
 
         # Orta panel - Senaryo Secimi
@@ -533,10 +533,14 @@ class SmokingClassifierGUI:
 
         fig, ax = plt.subplots(figsize=(4, 3.5))
         colors = ['#3498db', '#2ecc71', '#9b59b6', '#e74c3c']
-        bars = ax.bar(results.keys(), [v*100 for v in results.values()], color=colors)
+        bars = ax.bar(results.keys(), [v*100 for v in results.values()], color=colors, edgecolor='black')
         ax.set_ylabel('Dogruluk (%)')
         ax.set_title('Senaryo Karsilastirmasi')
-        ax.set_ylim(50, 85)
+        # Y eksenini verilere gore ayarla
+        min_acc = min(results.values()) * 100
+        max_acc = max(results.values()) * 100
+        ax.set_ylim(max(0, min_acc - 5), min(100, max_acc + 5))
+        ax.grid(axis='y', alpha=0.3)
 
         for bar, acc in zip(bars, results.values()):
             ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.3,
