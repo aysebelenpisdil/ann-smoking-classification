@@ -2,6 +2,11 @@
 Yapay Sinir Aglari - Sigara Icme Durumu Siniflandirmasi GUI
 """
 
+import matplotlib
+# MacOS'un kendi motoru yerine Tkinter motorunu kullanmaya zorluyoruz:
+matplotlib.use('TkAgg')
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from tkinter import ttk, messagebox
 import pandas as pd
@@ -9,8 +14,6 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import warnings
 warnings.filterwarnings('ignore')
 
