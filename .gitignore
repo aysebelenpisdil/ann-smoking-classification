@@ -1,5 +1,104 @@
-venv/
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
 .DS_Store
-.ipynb_checkpoints/
+Thumbs.db
+
+# Raw dataset files (large, may contain sensitive data)
+data/*.csv
+data/*.txt
+*.csv
+*.xlsx
+*.xls
+
+# Model weights and checkpoints (large binary files)
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.joblib
+*.ckpt
+*.pth.tar
+*.safetensors
+
+# Logs and outputs
+logs/
+*.log
+output/
+wandb/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
